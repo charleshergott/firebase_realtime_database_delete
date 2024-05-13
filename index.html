@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase Example</title>
+  </head>
+  <body>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js';
+      import {
+        getDatabase,
+        ref,
+        remove,
+      } from 'https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js';
+
+      const firebaseConfig = {
+        apiKey: 'AIzaSyBZqnUtSnaV6_195TrvauvNlNG-qJ260GA',
+        authDomain: 'corpjet.firebaseapp.com',
+        databaseURL:
+          'https://corpjetairports2024.europe-west1.firebasedatabase.app/',
+        projectId: 'corpjet',
+        storageBucket: 'corpjet.appspot.com',
+        messagingSenderId: '523000132975',
+        appId: '1:523000132975:web:3cc229dc2277580e49e49a',
+        measurementId: 'G-4H85YKZXJF',
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const database = getDatabase(app);
+      const rootRef = ref(database, '/');
+
+      // Remove the data from the database
+      remove(rootRef)
+        .then(() => {
+          console.log('Database deleted successfully!');
+        })
+        .catch((error) => {
+          console.error('Error deleting database:', error);
+        });
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js"></script>
+  </body>
+</html>
